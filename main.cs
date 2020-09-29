@@ -3,48 +3,38 @@ using System;
 class MainClass {
 
     public static void Main(string[] args) {
-        int answer;
-        string name;
-        char gender; //para preferenciar prestadores femininos para o sexo feminino
-        string contact;
+        int resposta1, resposta2;
+        string nome;
+        char genero; //para preferenciar prestadores femininos para o sexo feminino
+        string contato;
         clientAdress adress = new Adress();
-        string city;
-        string state;
-        string type;
+        string area;
+
+        Prestador joao = new Prestador();
+        joao.Registrar("Jão Couve", "Vitória", "ES", "Eletrica");
 
         Console.Write("Bem-vindo ao 'Resolva!', a plataforma que te ajuda a resolver seus problemas por si só com a ajuda de verdadeiros profissionais!!\n\nQuer solicitar suporte? [1] Sim ou [2] Não?\nResposta: ");
-        answer = int.Parse(Console.ReadLine());
-        if (answer == 1){
+        resposta1 = int.Parse(Console.ReadLine());
+        if (resposta1 == 1){
+            Console.Write("Presencial ou remoto? [1] Presencial ou [2] Remoto?\nResposta: ");
+            resposta2 = int.Parse(Console.ReadLine());
             Console.WriteLine("Dados pessoais");
             Console.Write("Nome: ");
-            name = Console.ReadLine();
-            Console.Write("Gênero (M para masculino e F para feminino): ");
-            gender = Console.ReadLine();
+            nome = Console.ReadLine();
+            //Console.Write("Gênero (M para masculino e F para feminino): ");
+            genero = Console.ReadLine();
             Console.Write("Telefone: ");
-            contact = Console.ReadLine();
+            contato = Console.ReadLine();
             Console.Write("Endereço: ");
             Client client = new Client();
-            client.Register(name, gender, contact);
-        } else if (answer == 2){
-            Console.ReadLine("Cadastrar prestador? [1] Sim ou [2] Não?\nResposta: ");
-            answer = int.Parse(Console.ReadeLine());
-            if (answer == 1){
-                Console.WriteLine("Dados pessoais");
-                Console.Write("Nome: ");
-                name = Console.ReadLine();
-                Console.Write("Gênero (M para masculino e F para feminino): ");
-                gender = Console.ReadLine();
-                Console.Write("Cidade: ");
-                city = Console.ReadLine();
-                Console.Write("Estado: ");
-                state = Console.ReadLine();
-                Console.Write("Tipo: ");
-                type = Console.ReadLine();
-                Worker worker = new Worker(name, gender, city, state, type);
-            }
+            Console.Write("Qual a area de suporte?\n[1] Eletrica\n[2] Mecanica\n[3] Hidráulica?\nResposta: ");
+            area = int.Parse(Console.ReadLine());
+            client.Register(nome, genero, contato, reposta2);
+
+
+
         } else {
             Console.WriteLine("Obrigado por usar o App.");
-            
         }
     }
 }

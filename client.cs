@@ -1,64 +1,51 @@
 using System;
 
 class Client {
-    private string name;
-    private char gender; //para preferenciar prestadores femininos para o sexo feminino
-    private string contact;
-    clientAdress adress = new Adress();
+    private string nome;
+    private char genero; //para preferenciar prestadores femininos para o sexo feminino
+    private string contato;
+    clientAdress endereco = new Adress();
     
-    // SETs
-    public static void Register(string name, char gender, string contact){
-        this.name = name;
-        this.gender = gender;
-        this.contact = contact;
-        setAdress();
+    public static void Register(string nome, /*char genero, */string contato, int tipoSuporte){
+        this.nome = nome;
+        this.genero = genero;
+        this.contato = contato;
+        if (tipoSuporte == 1)
+            setAdress();
+        else
+            SuporteRemoto();
     }
 
-    /*
-    private void setName(){ //alter name
-        Console.Write("Nome: ");
-        this.name = Console.ReadLine();
+    public void VerificaCompatibilidade(Client cliente, Prestador prestador) {
+        
     }
-    private void setGender(){ //alter gender
-        Console.Write("Gênero (M para masculino e F para feminino): ");
-        this.gender = Console.ReadLine();
-    }
-    public void setcontact(){ //alter contact
-        Console.Write("Telefone: ");
-        this.contact = Console.ReadLine();
-    }
-    public void setAdress(){ //alter adress
-        adress.setAdress();
-    }
-    */
-}
 
 private class clientAdress {
-    private string street;
-    private int number;
-    private string complement;
-    private string neighboor;
-    private string city;
-    private string state;
+    private string rua;
+    private int numero;
+    private string complemento;
+    private string bairro;
+    private string cidade;
+    private string estado;
 
     public void setAdress(){
         Console.Write("Rua: ");
-        street = Console.ReadLine();
+        rua = Console.ReadLine();
 
         Console.Write("Número: ");
-        number = IntParse(Console.ReadLine());
+        numero = IntParse(Console.ReadLine());
 
         Console.Write("Complemento: ");
-        complement = Console.ReadLine();
+        complemento = Console.ReadLine();
 
         Console.Write("Bairro: ");
-        neighboor = Console.ReadLine();
+        bairro = Console.ReadLine();
 
         Console.Write("Cidade: ");
-        city = Console.ReadLine();
+        cidade = Console.ReadLine();
 
         Console.Write("Estado: ");
-        State = Console.ReadLine();
+        estado = Console.ReadLine();
     }
 
 }
