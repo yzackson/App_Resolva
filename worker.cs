@@ -2,17 +2,42 @@ using System;
 
 class Prestador {
     private string nome;
-    //private char genero;
+    private string contato;
     private string cidade;
     private string estado;
-    private string area;
+    private string profissao;
 
-    // SET
-    public void Registrar(string nome,/* char genero,*/ string cidade, string estado, string area){
+    public void Registrar(string nome, string cidade, string estado, string profissao){
         this.nome = nome;
-        //this.genero = genero;
         this.cidade = cidade;
         this.estado = estado;
-        this.area = area;
+        this.profissao = profissao;
+    }
+
+    public string getNome(){
+        return nome;
+    }
+
+    public string getContato(){
+        return contato;
+    }
+
+    public string getCidade(){
+        return cidade;
+    }
+
+    public string getEstado(){
+        return estado;
+    }
+
+    public string getProfissao(){
+        return profissao;
+    }
+
+    public bool Confirmar(int x) {
+        if (x == 1)
+            return true;
+        else
+            return false;
     }
 }

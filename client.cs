@@ -2,50 +2,38 @@ using System;
 
 class Client {
     private string nome;
-    private char genero; //para preferenciar prestadores femininos para o sexo feminino
     private string contato;
-    clientAdress endereco = new Adress();
-    
-    public static void Register(string nome, /*char genero, */string contato, int tipoSuporte){
-        this.nome = nome;
-        this.genero = genero;
-        this.contato = contato;
-        if (tipoSuporte == 1)
-            setAdress();
-        else
-            SuporteRemoto();
-    }
-
-    public void VerificaCompatibilidade(Client cliente, Prestador prestador) {
-        
-    }
-
-private class clientAdress {
-    private string rua;
-    private int numero;
-    private string complemento;
-    private string bairro;
     private string cidade;
     private string estado;
-
-    public void setAdress(){
-        Console.Write("Rua: ");
-        rua = Console.ReadLine();
-
-        Console.Write("Número: ");
-        numero = IntParse(Console.ReadLine());
-
-        Console.Write("Complemento: ");
-        complemento = Console.ReadLine();
-
-        Console.Write("Bairro: ");
-        bairro = Console.ReadLine();
-
-        Console.Write("Cidade: ");
-        cidade = Console.ReadLine();
-
-        Console.Write("Estado: ");
-        estado = Console.ReadLine();
+    public string areaProblema;
+    public string descricaoProblema;
+    
+// Registra o solicitante
+    public void Register(string nome, string contato, string cidade, string estado){
+        this.nome = nome;
+        this.contato = contato;
+        this.cidade = cidade;
+        this.estado = estado;
+    }
+// Registra o problema
+    public void Problema(string areaProblema, string descricaoProblema){
+        this.areaProblema = areaProblema;
+        this.descricaoProblema = descricaoProblema;
     }
 
+// Verifica se o prestador é compatível com as exigências do prestador
+    public bool Compativel(Prestador prestador) {
+        if ((cidade == joao.getCidade) && (estado == joao.getEstado)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public bool Confirmar(int x) {
+        if (x == 1)
+            return true;
+        else
+            return false;
+    }
 }
