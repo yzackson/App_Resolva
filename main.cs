@@ -3,6 +3,9 @@ using System;
 class MainClass {
 
     public static void Main(string[] args) {
+
+        Console.Clear();
+
         int resposta;
         string nome;
         string contato;
@@ -12,7 +15,7 @@ class MainClass {
         string descricao;
 
         Prestador prestador = new Prestador();
-        prestador.Registrar("Jão Couve", "Vitória", "ES", "Eletrica");
+        prestador.Registrar("Jão Couve", "Vitória", "ES", "eletrica");
 
         Console.Write("Bem-vindo ao 'Resolva!'\n\nQuer solicitar suporte? [1] Sim ou [2] Não\nResposta: ");
         resposta = int.Parse(Console.ReadLine());
@@ -36,29 +39,37 @@ class MainClass {
 
             Console.Clear();
             Console.Write("Escreva a area de suporte? (eletrica, mecanica ou hidraulica)\nResposta: ");
-            profissao = int.Parse(Console.ReadLine());
+            profissao = Console.ReadLine();
             Console.Write("Descrição do problema: ");
             descricao = Console.ReadLine();
 
             client.Problema(profissao, descricao);
 
-            if (client.Compativel(prestador)){
-                Console.Write("Encontramos o prestador [0]. Ele é de [1]-[2] e é da área [3].\n Deseja acioná-lo para suporte? [1] Sim ou [2] Não\nResposta: ", prestador.getNome, prestador.getCidade, prestador.getEstado, prestador.getProfissao);
-                
-                //client.Confirmar(int.Parse(Console.ReadLine()));
-                
-                if (client.Confirmar(int.Parse(Console.ReadLine()))) {
-                    Console.WriteLine("Já passamos sua solicitação para o [0] e logo logo ele entrará em contato contigo. Obrigado por utilizar nosso App!");
+            if (client.CompativelProfissao(prestador)){
+                Console.Clear();
+                if (client.CompativelLocalidade(prestador)) {
+                    Console.Write("Encontramos o prestador {0} perto da sua localidade.\n Acionar suporte? [1] Sim ou [2] Não\nResposta: ", prestador.getNome());
+                    
+                    //client.Confirmar(int.Parse(Console.ReadLine()));
+                    
+                    if (client.Confirmar(int.Parse(Console.ReadLine()))) {
+                        Console.WriteLine("Já passamos sua solicitação para o {0} e logo logo ele entrará em contato contigo. Obrigado por utilizar nosso App!", prestador.getNome());
+                    } else {
+                        Console.WriteLine("Obrigado por utilizar o App.");
+                    }
                 } else {
-                    Console.WriteLine("Ah, tudo bem. Respeitamos seus motivos.");
+                    Console.Write("Encontramos o prestador {0}, mas ele não é da sua localidade. Ele é de {1}-{2} e só poderá te atender remotamente.\n Acionar suporte? [1] Sim ou [2] Não\nResposta: ", prestador.getNome(), prestador.getCidade(), prestador.getEstado());
+                    if (client.Confirmar(int.Parse(Console.ReadLine()))) {
+                        Console.WriteLine("Já passamos sua solicitação para o {0} e logo logo ele entrará em contato contigo. Obrigado por utilizar nosso App!", prestador.getNome());
+                    } else {
+                        Console.WriteLine("Obrigado por utilizar o App.");
+                    }
                 }
+            } else {
+                Console.Write("Nenhum prestador encontrado.");
             }
-            
-
-
-
         } else {
-            Console.WriteLine("Obrigado por usar o App.");
+            Console.WriteLine("Obrigado por utilizar o App.");
         }
     }
 }

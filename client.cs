@@ -8,6 +8,7 @@ class Client {
     public string areaProblema;
     public string descricaoProblema;
     
+    
 // Registra o solicitante
     public void Register(string nome, string contato, string cidade, string estado){
         this.nome = nome;
@@ -22,11 +23,18 @@ class Client {
     }
 
 // Verifica se o prestador é compatível com as exigências do prestador
-    public bool Compativel(Prestador prestador) {
-        if ((cidade == joao.getCidade) && (estado == joao.getEstado)) {
-            return true;
+    public bool CompativelLocalidade(Prestador prestador) {
+        if ((string.Equals(cidade, prestador.getCidade())) && (string.Equals(estado, prestador.getEstado()))) {
+          return true;
         } else {
-            return false;
+          return false;
+        }
+    }
+    public bool CompativelProfissao(Prestador prestador) {
+        if (string.Equals(areaProblema, prestador.getProfissao())) {
+          return true;
+        } else {
+          return false;
         }
     }
 
